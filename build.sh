@@ -4,11 +4,11 @@ set -o errexit
 python3 -m venv venv
 source venv/bin/activate
 
-# نصب وابستگی‌ها در محیط مجازی
+# نصب وابستگی‌ها
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# اجرای دستورات جنگو
+# دستورات دیتابیس و استاتیک
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput
