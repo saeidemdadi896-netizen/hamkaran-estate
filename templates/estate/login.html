@@ -1,0 +1,1 @@
+{% extends 'estate/base.html' %}{% block content %}<section class="form-wrap"><h1>ورود اعضا</h1><form method="post">{% csrf_token %}{{ form.as_p }}<button>ورود</button></form><p><a href="{% url 'register' %}">درخواست عضویت مشاور</a></p></section>{% endblock %}
