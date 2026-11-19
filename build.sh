@@ -1,14 +1,10 @@
 set -o errexit
 
-# ساخت محیط مجازی
-python3 -m venv venv
-source venv/bin/activate
-
-# نصب وابستگی‌ها در محیط مجازی
+# نصب وابستگی‌ها در محیطی که رندر ارائه داده است
 pip install --upgrade pip
 pip install -r requirements.txt
 
 # اجرای دستورات جنگو
-python manage.py makemigrations
-python manage.py migrate
+python manage.py makemigrations --noinput
+python manage.py migrate --noinput
 python manage.py collectstatic --noinput
