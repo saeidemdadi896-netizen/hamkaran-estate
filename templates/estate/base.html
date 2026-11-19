@@ -1,1 +1,36 @@
-{% load static %}<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}همکاران | تعاونی مشاوران املاک{% endblock %}</title><link rel="stylesheet" href="{% static 'estate/site.css' %}"></head><body><header><a class="brand" href="{% url 'home' %}">همکاران <small>تعاونی مشاوران املاک</small></a><nav><a href="{% url 'home' %}">آگهی‌ها</a><a href="{% url 'agents' %}">مشاوران</a>{% if user.is_authenticated and user.profile.status == 'approved' %}<a href="{% url 'requests_board' %}">تقاضاهای همکاران</a><a href="{% url 'dashboard' %}">کارتابل من</a>{% endif %}{% if user.is_staff %}<a href="/admin/">مدیریت</a>{% endif %}</nav><div>{% if user.is_authenticated %}<form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="link">خروج</button></form>{% else %}<a href="{% url 'login' %}">ورود</a> <a class="button small" href="{% url 'register' %}">عضویت مشاور</a>{% endif %}</div></header><main>{% for message in messages %}<p class="notice">{{ message }}</p>{% endfor %}{% block content %}{% endblock %}</main><footer>سامانه معرفی آگهی و همکاری مشاوران املاک</footer></body></html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه املاک همکاران</title>
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Vazir -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'estate/site.css' %}">
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">املاک همکاران</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">صفحه اصلی</a>
+                <a class="nav-link" href="#">آگهی‌ها</a>
+                <a class="nav-link" href="#">ورود مشاور</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
