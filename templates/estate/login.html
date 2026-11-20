@@ -1,1 +1,17 @@
-{% extends 'estate/base.html' %}{% block content %}<section class="form-wrap"><h1>ورود اعضا</h1><form method="post">{% csrf_token %}{{ form.as_p }}<button>ورود</button></form><p><a href="{% url 'register' %}">درخواست عضویت مشاور</a></p></section>{% endblock %}
+{% extends 'estate/base.html' %}
+{% block content %}
+<section class="login-layout">
+  <div class="login-intro">
+    <p class="eyebrow">دیجی املاک</p>
+    <h1>یک قدم تا انتخابی مطمئن در بازار ملک</h1>
+    <p>برای دسترسی به پنل و خدمات شبکه مشاوران، وارد حساب کاربری خود شوید.</p>
+    <div class="login-art"><span aria-hidden="true">✓</span> دسترسی به آگهی‌های معتبر و خدمات تخصصی</div>
+  </div>
+  <div class="form-wrap">
+    <h2>ورود به حساب کاربری</h2>
+    <p class="form-subtitle">اطلاعات حساب خود را وارد کنید.</p>
+    <form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">ورود به حساب <span aria-hidden="true">←</span></button></form>
+    <p class="register-link">مشاور املاک هستید؟ <a href="{% url 'register' %}">درخواست عضویت</a></p>
+  </div>
+</section>
+{% endblock %}
